@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, TextField, Typography } from '@mui/material';
 import axios from 'axios';
-
+import { Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 const Product = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [products, setProducts] = useState([]);
-  console.log('products: ', products);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   useEffect(() => {
@@ -42,23 +42,15 @@ const Product = () => {
     
     // <div>
         <div>
+          <div>
       <h2>Product List</h2>
-
+      <Link to="/about">About</Link>
+      </div>
       {loading && <p>Loading...</p>}
 
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
-      {/* {!loading && !error && (
-            <CardContent>
-        
-          {products.map(product => (
-            <li key={product.productCategoryId}>
-              <strong>{product.productCategoryName}</strong> - {product.description}
-            </li>
-          ))}
-            </CardContent>
-        
-      )} */}
+     
        <TextField
         label="Search by Product Name"
         variant="outlined"
